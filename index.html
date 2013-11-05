@@ -5,17 +5,30 @@
 <title>GradeAid-Proto</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
 </head>
 <body>
 
   <script type="text/x-handlebars">
-    <h2>Welcome to GradeAid</h2>
-
-    {{outlet}}
+    <div class="container">
+      <div class="header">
+        <h2>Welcome to GradeAid</h2>
+      </div>
+    </div>
+    <div class="container">
+      {{outlet}}
+    </div
   </script>
 
   <script type="text/x-handlebars" data-template-name="index">
-    
+    <div class="row-fluid">
+      <div class="col-md-4">
+        <p>Students</p>
+      </div>
+      <div class="col-md-8">
+        <p>Please select a student</p>
+      </div>
+    </div>
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>
