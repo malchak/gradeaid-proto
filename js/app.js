@@ -1,6 +1,6 @@
 App = Ember.Application.create();
 
-App.AplicationAdapter = DS.FixtureAdapter.extend();
+App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Student = DS.Model.extend({
 	firstName: DS.attr('string'),
@@ -24,9 +24,11 @@ App.Student.FIXTURES = [
 ]
 
 App.Router.map(function() {
-  
+  this.resource('students');
 });
 
-App.IndexRoute = Ember.Route.extend({
-  
-});
+App.StudentsRoute = Ember.Route.extend({
+	model: function(){
+		return this.store.find('student');
+	}
+})
