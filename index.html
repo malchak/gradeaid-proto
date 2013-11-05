@@ -28,14 +28,18 @@
         <p>Students</p>
         <ul>
           {{#each}}
-            <li>{{fullName this}}</li>
+            <li>{{#link-to 'students.show' this}}{{fullName}}{{/link-to}}</li>
           {{/each}}
         </ul>
       </div>
       <div class="col-md-8">
-        <p>Please select a student</p>
+        {{outlet}}
       </div>
     </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="students/show">
+    <h3>{{fullName}}</h3>
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>
