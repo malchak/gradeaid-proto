@@ -11,10 +11,12 @@
 
   <script type="text/x-handlebars">
     <div class="container">
-      <div class="header">
+      <div class="page-header">
         <h2>Welcome to GradeAid</h2>
-        {{#link-to 'students'}}Students{{/link-to}}
-        {{#link-to 'index'}}Home{{/link-to}}
+        <ul class="nav nav-pills">
+          <li>{{#link-to 'index'}}Home{{/link-to}}</li>
+          <li>{{#link-to 'students'}}Students{{/link-to}}</li>
+        </ul>
       </div>
     </div>
     <div class="container">
@@ -25,22 +27,28 @@
   <script type="text/x-handlebars" data-template-name="students">
     <div class="row-fluid">
       <div class="col-md-4">
-        <p>Students</p>
-        <ul>
+        <ul class="list-group">
           {{#each}}
-            <li>{{#link-to 'students.show' this}}{{fullName}}{{/link-to}}</li>
+            <li class="list-group-item">{{#link-to 'students.show' this}}{{fullName}}{{/link-to}}</li>
           {{/each}}
         </ul>
       </div>
       <div class="col-md-8">
-        {{outlet}}
+        <div class="container">
+          {{outlet}}
+        </div>
       </div>
     </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="students/index">
+    <p>Please select a student</p>
   </script>
 
   <script type="text/x-handlebars" data-template-name="students/show">
     <h3>{{fullName}}</h3>
   </script>
+
 
   <script src="js/libs/jquery-1.9.1.js"></script>
   <script src="js/libs/handlebars-1.0.0.js"></script>
