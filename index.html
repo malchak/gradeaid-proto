@@ -28,6 +28,7 @@
     <div class="row-fluid">
       <div class="col-md-4">
         <ul class="list-group">
+          {{input type='text' class="add-input" value=firstName placeholder="First Name"}}{{input type='text' class="add-input" value=lastName placeholder="Last Name"}}<button {{action 'createStudent'}}class="btn btn-success">Add</button>
           {{#each}}
             <li class="list-group-item">{{#link-to 'students.show' this}}{{fullName}}{{/link-to}}</li>
           {{/each}}

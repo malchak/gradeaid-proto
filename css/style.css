@@ -2,3 +2,8 @@
 html, body {
     margin: 20px;
 }
+
+.add-input {
+	border: none;
+	width: 149px;
+}

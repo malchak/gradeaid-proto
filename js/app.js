@@ -40,3 +40,31 @@ App.StudentsShowRoute = Ember.Route.extend({
 		return App.Student.find(params.student_id);
 	}
 });
+
+
+App.StudentsController = Ember.ArrayController.extend({
+	actions: {
+		createStudent: function(){
+			firstName = this.get('firstName');
+			lastName = this.get('lastName');
+
+			student = this.store.createRecord('student', {
+				firstName: firstName,
+				lastName: lastName
+			});
+
+			this.set('firstName', '');
+			this.set('lastName', '');
+			student.save();
+		}
+	}
+});
+
+
+
+
+
+
+
+
+
