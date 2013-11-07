@@ -47,14 +47,21 @@ App.StudentsController = Ember.ArrayController.extend({
 		createStudent: function(){
 			firstName = this.get('firstName');
 			lastName = this.get('lastName');
+			if (!firstName.trim()) { return; }
 
 			student = this.store.createRecord('student', {
 				firstName: firstName,
 				lastName: lastName
 			});
+		}
+	}
+});
 
-			this.set('firstName', '');
-			this.set('lastName', '');
+App.StudentController = Ember.ObjectController.extend({
+	actions: {
+		removeStudent: function(){
+			var student = this.get('model');
+			student.deleteRecord();
 			student.save();
 		}
 	}
