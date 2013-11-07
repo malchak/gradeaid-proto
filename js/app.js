@@ -53,6 +53,8 @@ App.StudentsController = Ember.ArrayController.extend({
 				firstName: firstName,
 				lastName: lastName
 			});
+			this.set('firstName', '');
+			this.set('lastName', '');
 		}
 	}
 });
