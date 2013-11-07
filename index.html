@@ -28,9 +28,12 @@
     <div class="row-fluid">
       <div class="col-md-4">
         <ul class="list-group">
-          {{input type='text' class="add-input" value=firstName placeholder="First Name"}}{{input type='text' class="add-input" value=lastName placeholder="Last Name"}}<button {{action 'createStudent'}}class="btn btn-success">Add</button>
+          {{input type='text' class="add-input" value=firstName placeholder="First Name"}}
+          {{input type='text' class="add-input" value=lastName placeholder="Last Name"}}
+          <button {{action 'createStudent'}}class="btn btn-success">Add</button>
           {{#each itemController="student"}}
-            <li class="list-group-item">{{#link-to 'students.show' this}}{{fullName}}{{/link-to}}<button {{action 'removeStudent'}} class="destroy"></button></li>
+            <li class="list-group-item">{{#link-to 'students.show' this}}{{fullName}}{{/link-to}}
+            <button {{action 'removeStudent'}} class="destroy"></button></li>
           {{/each}}
         </ul>
       </div>
