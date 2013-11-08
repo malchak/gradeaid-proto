@@ -5,6 +5,7 @@ App.ApplicationAdapter = DS.FixtureAdapter.extend();
 App.Student = DS.Model.extend({
 	firstName: DS.attr('string'),
 	lastName: DS.attr('string'),
+	assignments: DS.attr('string'),
 	fullName: (function(){
 		return this.get('firstName') + " " + this.get('lastName');
 	}).property('firstName', 'lastName')
@@ -14,7 +15,17 @@ App.Student.FIXTURES = [
 	{
 		id: 1,
 		firstName: 'Harry',
-		lastName: 'Potter'
+		lastName: 'Potter',
+		assignments: [
+			{
+				id: 1,
+				subject: 'Math',
+				type: 'Quiz',
+				title: 'Take Home Test',
+				points: 5,
+				outOf: 10
+			}
+		]
 	},
 	{
 		id: 2,
@@ -25,7 +36,7 @@ App.Student.FIXTURES = [
 
 App.Router.map(function() {
   this.resource('students', function(){
-  	this.route('show', {path: '/:student_id'});
+  	this.resource('student', {path: '/:student_id'});
   });
 });
 
@@ -35,7 +46,7 @@ App.StudentsRoute = Ember.Route.extend({
 	}
 });
 
-App.StudentsShowRoute = Ember.Route.extend({
+App.StudentIndexRoute = Ember.Route.extend({
 	model: function(params){
 		return App.Student.find(params.student_id);
 	}
@@ -69,9 +80,6 @@ App.StudentController = Ember.ObjectController.extend({
 		}
 	}
 });
-
-
-
 
 
 

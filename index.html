@@ -32,7 +32,7 @@
           {{input type='text' value=lastName class="add-input" placeholder="Last Name"}}
           <button {{action 'createStudent'}} class="btn btn-success">Add</button>
           {{#each itemController="student"}}
-            <li class="list-group-item">{{#link-to 'students.show' this}}{{fullName}}{{/link-to}}
+            <li class="list-group-item">{{#link-to 'student' this}}{{fullName}}{{/link-to}}
             <button {{action 'removeStudent'}} class="destroy"></button></li>
           {{/each}}
         </ul>
@@ -49,8 +49,13 @@
     <p>Please select a student</p>
   </script>
 
-  <script type="text/x-handlebars" data-template-name="students/show">
+  <script type="text/x-handlebars" data-template-name="student">
     <h3>{{fullName}}</h3>
+    <ul class="list-group">
+      {{#each assignments}}
+        <li class="list-group-item">{{title}}</li>
+      {{/each}}
+    </ul>
   </script>
 
 
