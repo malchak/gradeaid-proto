@@ -36,8 +36,7 @@ App.Student.FIXTURES = [
 
 App.Router.map(function() {
   this.resource('students', function(){
-  	this.resource('student', {path: '/:student_id'}, function(){
-  	});
+  	this.resource('student', {path: '/:student_id'});
   });
   this.resource('assignments');
 });
