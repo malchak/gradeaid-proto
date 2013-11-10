@@ -2,8 +2,8 @@ App = Ember.Application.create();
 
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
+//Models
 App.Student = DS.Model.extend({
-	assignments: DS.hasMany('assigment'),
 	firstName: DS.attr('string'),
 	lastName: DS.attr('string'),
 	assignments: DS.attr('string'),
@@ -13,14 +13,15 @@ App.Student = DS.Model.extend({
 });
 
 App.Assignment = DS.Model.extend({
-	students: DS.hasMany('student'),
 	subject: DS.attr('string'),
 	type: DS.attr('string'),
 	title: DS.attr('string'),
 	pointsEarned: DS.attr('number'),
 	pointsTotal: DS.attr('number')
 });
+//####################
 
+//Fixtures
 App.Student.FIXTURES = [
 	{
 		id: 1,
@@ -33,19 +34,18 @@ App.Student.FIXTURES = [
 		lastName: 'Weesley'
 	}
 ];
+//######################
 
-App.Assignment.Fixtures = [
-
-]
-
-
+//Router
 App.Router.map(function() {
   this.resource('students', function(){
   	this.resource('student', {path: '/:student_id'});
   });
   this.resource('assignments');
 });
+//######################
 
+//Routes
 App.StudentsRoute = Ember.Route.extend({
 	model: function(){
 		return this.store.find('student');
@@ -57,8 +57,9 @@ App.StudentIndexRoute = Ember.Route.extend({
 		return App.Student.find(params.student_id);
 	}
 });
+//#######################
 
-
+//Controllers
 App.StudentsController = Ember.ArrayController.extend({
 	actions: {
 		createStudent: function(){
@@ -85,7 +86,7 @@ App.StudentController = Ember.ObjectController.extend({
 		}
 	}
 });
-
+//########################
 
 
 
