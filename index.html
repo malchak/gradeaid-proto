@@ -54,11 +54,22 @@
     <h3>{{fullName}}</h3>
     <ul class="list-group">
     </ul>
-    {{#link-to 'students.edit'}}<button class="btn btn-primary">Edit</button>{{/link-to}}
+    {{#link-to 'students.edit' content}}<button class="btn btn-primary">Edit</button>{{/link-to}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="students/edit">
-    <h3>Test</h3>
+    <h3>{{fullName}}</h3>
+    <form>
+      <fieldset>
+        <div>
+          {{input type="text" valueBinding="firstName" name="firstName"}}
+        </div>
+        <div>
+          {{input type="text" valueBinding="lastName" name="lastName"}}
+        </div>
+        <button {{action save}} class="btn btn-success">Save Changes</button>  <button {{action cancel target='controller'}} class="btn btn-primary">Cancel</button>
+      </fieldset>
+    </form>
   </script>
 
   <script type="text/x-handlebars" data-template-name="assignments">
