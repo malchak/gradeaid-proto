@@ -80,6 +80,7 @@ App.StudentsController = Ember.ArrayController.extend({
 			});
 			this.set('firstName', '');
 			this.set('lastName', '');
+			student.save();
 		}
 	}
 });
