@@ -93,6 +93,7 @@ App.StudentsShowController = Ember.ObjectController.extend({
 				student.deleteRecord();
 				student.save();
 			}
+			this.transitionToRoute('students.index');
 		}
 	}
 });
