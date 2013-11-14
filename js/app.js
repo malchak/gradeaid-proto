@@ -39,7 +39,8 @@ App.Student.FIXTURES = [
 //Router
 App.Router.map(function() {
   this.resource('students', function(){
-  	this.resource('student', {path: '/:student_id'});
+  	this.route('show', {path: '/:student_id'});
+  	this.route('edit');
   });
   this.resource('assignments');
 });
@@ -52,7 +53,7 @@ App.StudentsRoute = Ember.Route.extend({
 	}
 });
 
-App.StudentIndexRoute = Ember.Route.extend({
+App.StudentsShowRoute = Ember.Route.extend({
 	model: function(params){
 		return App.Student.find(params.student_id);
 	}
@@ -77,7 +78,7 @@ App.StudentsController = Ember.ArrayController.extend({
 	}
 });
 
-App.StudentController = Ember.ObjectController.extend({
+App.StudentsShowController = Ember.ObjectController.extend({
 	actions: {
 		removeStudent: function(){
 			var student = this.get('model');
