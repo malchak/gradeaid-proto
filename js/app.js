@@ -81,7 +81,7 @@ App.StudentController = Ember.ObjectController.extend({
 	actions: {
 		removeStudent: function(){
 			var student = this.get('model');
-			if(confirm('Are you sure?')){
+			if(confirm('Are you sure you want to remove '+student.get('fullName')+'?')){
 				student.deleteRecord();
 				student.save();
 			}
