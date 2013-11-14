@@ -7,8 +7,8 @@
 
 
 
-// Version: v1.0.0-beta.3
-// Last commit: 2259c27 (2013-09-28 19:24:07 -0700)
+// Version: v1.0.0-beta.3-4-g169793e
+// Last commit: 169793e (2013-11-13 20:53:54 -0800)
 
 
 (function() {
@@ -64,7 +64,7 @@ var define, requireModule;
 
 if ('undefined' === typeof DS) {
   DS = Ember.Namespace.create({
-    VERSION: '1.0.0-beta.2'
+    VERSION: '1.0.0-beta.3'
   });
 
   if ('undefined' !== typeof window) {
@@ -75,6 +75,7 @@ if ('undefined' === typeof DS) {
     Ember.libraries.registerCoreLibrary('Ember Data', DS.VERSION);
   }
 }
+
 })();
 
 
@@ -5524,10 +5525,19 @@ DS.InvalidError.prototype = Ember.create(Error.prototype);
         // ...your code here
       });
 
-  To tell your store which adapter to use, set its `adapter` property:
+  You can set the `ApplicationAdapter` property to use it as the default for every model:
 
-      App.store = DS.Store.create({
-        adapter: App.MyAdapter.create()
+      App.ApplicationAdapter = App.MyAdapter
+
+  If you need more fine-grained customisation you can create Per Type adapters which are
+  automatically picked up by Ember Data
+
+      App.Post = DS.Model.extend({
+        // ...
+      });
+
+      App.PostAdapter = App.ApplicationAdapter.extend({
+        // ...
       });
 
   `DS.Adapter` is an abstract base class that you should override in your
