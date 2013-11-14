@@ -34,7 +34,7 @@
           <button {{action 'createStudent'}} class="btn btn-success">Add</button>
           {{#each itemController="student"}}
             <li class="list-group-item">{{#link-to 'student' this}}{{fullName}}{{/link-to}}
-            <button {{action 'removeStudent'}} class="destroy"></button></li>
+            <span {{action 'removeStudent'}} class="destroy"></span></li>
           {{/each}}
         </ul>
       </div>
