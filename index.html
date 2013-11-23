@@ -53,6 +53,9 @@
   <script type="text/x-handlebars" data-template-name="students/show">
     <h3>{{fullName}}</h3>
     <ul class="list-group">
+    {{#each assignments}}
+      <li>{{title}}</li>
+    {{/each}}
     </ul>
     {{#link-to 'students.edit' content}}<button class="btn btn-primary">Edit</button>{{/link-to}}
   </script>

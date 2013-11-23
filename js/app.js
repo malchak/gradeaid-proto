@@ -12,12 +12,12 @@ App.Student = DS.Model.extend({
 	}).property('firstName', 'lastName')
 });
 
-App.Assignment = DS.Model.extend({
-	subject: DS.attr('string'),
-	type: DS.attr('string'),
-	title: DS.attr('string'),
-	pointsEarned: DS.attr('number'),
-	pointsTotal: DS.attr('number')
+App.User = DS.Model.extend({
+	firstName: DS.attr('string'),
+	lastName: DS.attr('string'),
+	email: DS.attr('string'),
+	password: DS.attr('string'),
+	passwordConfirm: DS.attr('string'),
 });
 //####################
 
@@ -27,6 +27,9 @@ App.Student.FIXTURES = [
 		id: 1,
 		firstName: 'Harry',
 		lastName: 'Potter',
+		assignments: [{id: 1, title: "reading quiz", completed: true, onTime: false, grade: "B", subject: "reading"},
+									{id: 2, title: "multiplcation homework", completed: false, onTime: false, grade: "D", subject: "math"}
+									]
 	},
 	{
 		id: 2,
@@ -42,7 +45,10 @@ App.Router.map(function() {
   	this.route('show', {path: '/:student_id'});
   	this.route('edit', {path: '/:student_id/edit'});
   });
-  this.resource('assignments');
+  
+  this.resource('users', function(){
+  	this.route('new');
+  });
 });
 //######################
 
